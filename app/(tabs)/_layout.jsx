@@ -2,28 +2,30 @@ import { Tabs } from "expo-router";
 import { Image, Text, View } from "react-native";
 import { icons } from "../../constants";
 import { useGlobalContext } from "../../context/GlobalProvider";
+import { SafeAreaView } from "react-native-safe-area-context";
 const TabIcon = ({ icon, color, name, focused }) => {
   return (
-    <View className="items-center justify-center gap-2">
+    <View className="items-center justify-center mt-4 w-16">
       <Image
         source={icon}
         resizeMode="contain"
         tintColor={color}
-        className="w-6 h-6"
+        style={{ width: 24, height: 24 }}
       />
       <Text
-        className={`${focused ? "font-psemibold" : "font-pregular"} text-xs`}
-        style={{ color: color }}
+        className={`${focused ? "font-psemibold" : "font-pregular"} text-xs text-center whitespace-nowrap`}
+        style={{ color: color, marginTop: 2 }}
       >
         {name}
       </Text>
+
     </View>
   );
 };
 const TabsLayout = () => {
   const { isUploading } = useGlobalContext();
   return (
-    <>
+    <SafeAreaView style={{ flex: 1 }}>
       <Tabs
         screenOptions={{
           tabBarShowLabel: false,
@@ -33,7 +35,8 @@ const TabsLayout = () => {
             backgroundColor: "#161622",
             borderTopWidth: 1,
             borderTopColor: "#232533",
-            height: 84,
+            height: 70,
+            paddingBottom: 10,
           },
         }}
       >
@@ -91,7 +94,7 @@ const TabsLayout = () => {
           }}
         />
       </Tabs>
-    </>
+    </SafeAreaView>
   );
 };
 
