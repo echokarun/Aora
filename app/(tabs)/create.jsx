@@ -30,8 +30,13 @@ const Create = () => {
   });
 
   const UploadingCard = () => {
-    return;
+    return (
+      <View className="flex-row items-center">
+        <Text className="text-white">Uploading...</Text>
+      </View>
+    );
   };
+
 
   const openPicker = async (selectType) => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -155,11 +160,12 @@ const Create = () => {
           otherStyles="mt-7"
         />
         <CustomButton
-          title={isUploading ? UploadingCard() : "Submit & Publish"}
+          title={isUploading ? <UploadingCard /> : "Submit & Publish"}
           handlePress={submit}
           containerStyles="mt-7"
           isLoading={isUploading}
         />
+
       </ScrollView>
     </SafeAreaView>
   );
